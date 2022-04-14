@@ -1,0 +1,11 @@
+package com.motivity.services;
+import java.util.List;
+
+import com.motivity.entities.Shoppingmall;
+//import shoppingmall.Shoppingmall;
+public interface ShoppingService {
+	void add(Shoppingmall shoppingmall);
+	void delete(Shoppingmall shoppingmall);
+	void update(Shoppingmall shoppingmall);
+	List<Shoppingmall> selection();
+}
