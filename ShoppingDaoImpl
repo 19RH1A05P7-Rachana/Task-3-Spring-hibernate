@@ -1,0 +1,31 @@
+package com.motivity.dao;
+import com.motivity.entities.Shoppingmall;
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+@Repository
+public class ShoppingDaoImpl implements ShoppingDao{
+	 @Autowired
+	   private SessionFactory sessionFactory;
+
+	   public void add(Shoppingmall shoppingmall) {
+	       sessionFactory.getCurrentSession().save(shoppingmall);
+	 }
+	   public void delete(Shoppingmall shoppingmall) {
+		   sessionFactory.getCurrentSession().delete(shoppingmall);
+	   }
+	   public void update(Shoppingmall shoppingmall) {
+		   sessionFactory.getCurrentSession().update(shoppingmall);
+	   }
+	   @SuppressWarnings("unchecked")
+		public List<Shoppingmall> selection(){
+			List<Shoppingmall> listUser = (List<Shoppingmall>) sessionFactory.getCurrentSession()
+	                .createCriteria(Shoppingmall.class)
+	                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+	        return listUser;
+		}
+}
