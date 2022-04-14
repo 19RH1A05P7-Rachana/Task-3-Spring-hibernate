@@ -1,0 +1,33 @@
+package com.motivity.services;
+import com.motivity.dao.ShoppingDao;
+import com.motivity.entities.Shoppingmall;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class shoppingserviceimp implements ShoppingService {
+
+    @Autowired
+    public ShoppingDao shoppingDao;
+
+    @Transactional
+    public void add(Shoppingmall shoppingmall) {
+        shoppingDao.add(shoppingmall);
+    }
+    @Transactional
+    public void delete(Shoppingmall shoppingmall) {
+    	shoppingDao.delete(shoppingmall);
+    }
+    @Transactional
+    public void update(Shoppingmall shoppingmall) {
+    	shoppingDao.update(shoppingmall);
+    }
+    @Transactional
+	public List<Shoppingmall> selection(){
+		return shoppingDao.selection();
+	}
+}
